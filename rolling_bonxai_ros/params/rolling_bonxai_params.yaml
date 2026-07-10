@@ -5,18 +5,18 @@ rolling_bonxai_server_node:
     topic_in: "/ffs_points2"
 
     occupancy:
-      resolution: 0.05
+      resolution: 0.1
 
       # Non lasciare infinito verticale, soprattutto con stereo
-      occupancy_min_z: -1.0
-      occupancy_max_z: 3.0
+      occupancy_min_z: -2.0
+      occupancy_max_z: 5.0
 
       # Più alto = serve più evidenza per considerare occupato
       occupancy_threshold: 0.65
 
     sensor_model:
       # 10 m per stereo denso è molto permissivo
-      max_range: 8.0
+      max_range: 5.0
 
       # Hit più debole: un singolo punto non deve "bloccare" subito
       hit: 0.55
@@ -33,18 +33,18 @@ rolling_bonxai_server_node:
         chunk_size: 2.0
 
       transition_manager:
-        hysteresis_ratio: 0.2
+        hysteresis_ratio: 0.3
 
       loading_policy:
         name: "neighborhood"
         neighborhood:
-          radius: 1
+          radius: 3
 
       storage:
         full_save_folder_path: "/home/tmp/bonxai_chunks"
 
       asyncio:
-        enable_io: false
+        enable_io: true
         num_load_threads: 3
         num_save_threads: 1
 
