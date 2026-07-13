@@ -9,14 +9,14 @@ rolling_bonxai_server_node:
 
       # Non lasciare infinito verticale, soprattutto con stereo
       occupancy_min_z: -2.0
-      occupancy_max_z: 5.0
+      occupancy_max_z: 10.0
 
       # Più alto = serve più evidenza per considerare occupato
       occupancy_threshold: 0.65
 
     sensor_model:
       # 10 m per stereo denso è molto permissivo
-      max_range: 5.0
+      max_range: 10.0
 
       # Hit più debole: un singolo punto non deve "bloccare" subito
       hit: 0.55
@@ -30,7 +30,7 @@ rolling_bonxai_server_node:
 
     rolling:
       coordinate_system:
-        chunk_size: 2.0
+        chunk_size: 4.0
 
       transition_manager:
         hysteresis_ratio: 0.3
@@ -38,7 +38,7 @@ rolling_bonxai_server_node:
       loading_policy:
         name: "neighborhood"
         neighborhood:
-          radius: 3
+          radius: 8
 
       storage:
         full_save_folder_path: "/home/tmp/bonxai_chunks"
