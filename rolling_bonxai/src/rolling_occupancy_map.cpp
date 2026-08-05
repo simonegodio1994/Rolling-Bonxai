@@ -121,7 +121,7 @@ void RollingOccupancyMap::updateOccupancy(const std::vector<Vector3D>& points,
         return;
     }
 
-    logger_->log_info("[RollingBonxai]: Dispatching rays to chunks");
+    //logger_->log_info("[RollingBonxai]: Dispatching rays to chunks");
     
     // square of max range for quick comparisons
     const double max_range_sq = max_range * max_range;
