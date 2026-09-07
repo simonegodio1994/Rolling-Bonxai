@@ -1,0 +1,56 @@
+rolling_bonxai_server_node:
+  ros__parameters:
+    frame_id: "odom"
+    base_frame_id: "odom"
+    topic_in: "/cloud_registered"
+
+    occupancy:
+      resolution: 0.1
+
+      occupancy_min_z: -2.0
+      occupancy_max_z: 20.0
+
+      # Mantiene una classificazione occupata moderatamente prudente.
+      occupancy_threshold: 0.55
+
+    sensor_model:
+      max_range: 20.0
+
+      # Occupazione decisamente più rapida.
+      hit: 0.65
+
+      # Clearing più lento, ma ancora efficace.
+      miss: 0.45
+
+      # Consente di accumulare maggiore confidenza sia libera sia occupata.
+      min: 0.15
+      max: 0.90
+
+    rolling:
+      coordinate_system:
+        chunk_size: 4.0
+
+      transition_manager:
+        hysteresis_ratio: 0.3
+
+      loading_policy:
+        name: "neighborhood"
+        neighborhood:
+          radius: 8
+
+      storage:
+        full_save_folder_path: "/home/tmp/bonxai_chunks"
+
+      asyncio:
+        enable_io: true
+        num_load_threads: 3
+        num_save_threads: 1
+
+    server:
+      cleanup_interval_sec: 60.0
+
+    stats:
+      enable_stats: true
+      quick_stats: true
+      publish_occupied_voxels: true
+      publish_rate: 2.0
