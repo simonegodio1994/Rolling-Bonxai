@@ -39,7 +39,7 @@ def generate_launch_description():
         plugin='RollingBonxai::RollingBonxaiServer',
         name='rolling_bonxai_server_node',
         parameters=[rolling_bonxai_params],
-        extra_arguments=[{'use_intra_process_comms': True}],
+        extra_arguments=[{'use_intra_process_comms': False}],
     )
     
     # Create container with BonxaiServer
